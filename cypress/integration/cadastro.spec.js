@@ -10,27 +10,20 @@ context('Cadastro', () => {
         //POST (aborted) /api/1/databases/userdetails/collections/newtable?apiKey=YEX0M2QMPd7JWJw_ipMB3a5gDddt4B_X
         //POST (aborted) /api/1/databases/userdetails/collections/usertable?apiKey=YEX0M2QMPd7JWJw_ipMB3a5gDddt4B_X
         //GET (aborted) /api/1/databases/userdetails/collections/newtable?apiKey=YEX0M2QMPd7JWJw_ipMB3a5gDddt4B_X
-        cy.server()
-        cy.route({
-            method: 'POST',
-            url: '**/api/1/databases/userdetails/collections/newtable?**',
-            status: 200,
-            response: {}
-        }).as('postNewtable');
-
-        cy.route({
-            method: 'POST', 
-            url: '**/api/1/databases/userdetails/collections/usertable?**', 
-            status: 200, 
-            response: {}
-        }).as('postUsertable');
-
-        cy.route({
-            method: 'GET',
-            url: '**/api/1/databases/userdetails/collections/newtable?**',
-            status: 200,
-            response: {}
-        }).as('getNewtable');
+        cy.intercept('POST', '**/api/1/databases/userdetails/collections/newtable?**', {
+            statusCode: 200,
+            body: {}
+          }).as('postNewtable');
+      
+          cy.intercept('POST', '**/api/1/databases/userdetails/collections/usertable?**', {
+            statusCode: 200, 
+            body: {}
+          }).as('postUsertable');
+      
+          cy.intercept('GET', '**/api/1/databases/userdetails/collections/newtable?**', {
+            statusCode: 200,
+            body: {}
+          }).as('getNewtable');
 
 
         cy.visit('Register.html');
@@ -59,16 +52,16 @@ context('Cadastro', () => {
         
         
         cy.wait('@postNewtable').then((resNewtable) => {
-            expect(resNewtable.status).to.eq(200)
-        })
+            expect(resNewtable.response.statusCode).to.eq(200)
+          })
       
           cy.wait('@postUsertable').then((resUsertable) => {
-            expect(resUsertable.status).to.eq(200)
-        })
+            expect(resUsertable.response.statusCode).to.eq(200)
+          })
       
-        cy.wait('@getNewtable').then((resNewtable) => {
-            expect(resNewtable.status).to.eq(200)
-        })
+          cy.wait('@getNewtable').then((resNewtable) => {
+            expect(resNewtable.response.statusCode).to.eq(200)
+          })
         cy.url().should('contain','WebTable');
 
     });

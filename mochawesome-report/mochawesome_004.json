@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-07-05T23:18:17.624Z",
+    "end": "2021-07-05T23:19:18.369Z",
+    "duration": 60745,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e890f75b-0af8-4c26-9941-72a6be9c7d57",
+      "title": "",
+      "fullFile": "cypress/integration/cadastro.spec.js",
+      "file": "cypress/integration/cadastro.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9fa09335-191b-47bc-9681-378a4765946b",
+          "title": "Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastro de usuario no site",
+              "fullTitle": "Cadastro Cadastro de usuario no site",
+              "timedOut": null,
+              "duration": 60599,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//rotas\n//POST (aborted) /api/1/databases/userdetails/collections/newtable?apiKey=YEX0M2QMPd7JWJw_ipMB3a5gDddt4B_X\n//POST (aborted) /api/1/databases/userdetails/collections/usertable?apiKey=YEX0M2QMPd7JWJw_ipMB3a5gDddt4B_X\n//GET (aborted) /api/1/databases/userdetails/collections/newtable?apiKey=YEX0M2QMPd7JWJw_ipMB3a5gDddt4B_X\ncy.intercept('POST', '**/api/1/databases/userdetails/collections/newtable?**', {\n  statusCode: 200,\n  body: {}\n}).as('postNewtable');\ncy.intercept('POST', '**/api/1/databases/userdetails/collections/usertable?**', {\n  statusCode: 200,\n  body: {}\n}).as('postUsertable');\ncy.intercept('GET', '**/api/1/databases/userdetails/collections/newtable?**', {\n  statusCode: 200,\n  body: {}\n}).as('getNewtable');\ncy.visit('Register.html');\ncy.get('input[placeholder=\"First Name\"]').type(chance.first());\ncy.get('input[ng-model^=Last]').type(chance.last());\ncy.get('input[ng-model^=Email]').type(chance.email());\ncy.get('input[ng-model^=Phone]').type(chance.phone({\n  formatted: false\n})); //Radios e Checks\ncy.get('input[value=FeMale]').check();\ncy.get('input[type=checkbox]').check('Cricket');\ncy.get('input[type=checkbox]').check('Hockey'); //Combo -- Select\ncy.get('select#Skills').select('APIs');\ncy.get('select#countries').select('Argentina');\ncy.get('select#country').select('Australia', {\n  force: true\n});\ncy.get('select#yearbox').select('1988');\ncy.get('select[ng-model^=month]').select('November');\ncy.get('select#daybox').select('18');\ncy.get('input#firstpassword').type('Ab@123456');\ncy.get('input#secondpassword').type('Ab@123456'); //Upload Imagem\ncy.get('input#imagesrc').attachFile('upload.png'); //click\ncy.get('#submitbtn').click();\ncy.wait('@postNewtable').then(function (resNewtable) {\n  expect(resNewtable.response.statusCode).to.eq(200);\n});\ncy.wait('@postUsertable').then(function (resUsertable) {\n  expect(resUsertable.response.statusCode).to.eq(200);\n});\ncy.wait('@getNewtable').then(function (resNewtable) {\n  expect(resNewtable.response.statusCode).to.eq(200);\n});\ncy.url().should('contain', 'WebTable');",
+              "err": {},
+              "uuid": "9544ca0f-8ebc-41c0-bfa6-60abb8114cb6",
+              "parentUUID": "9fa09335-191b-47bc-9681-378a4765946b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9544ca0f-8ebc-41c0-bfa6-60abb8114cb6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 60599,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
