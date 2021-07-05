@@ -1,9 +1,9 @@
 # cypress-agilizei-bootcamp
-<h1>CYPRESS BOOTCAMP</h1>
+<h2>CYPRESS BOOTCAMP</h2>
 
-<img src=https://media.giphy.com/media/hrRJ41JB2zlgZiYcCw/giphy.gif>
+<img src="https://media.giphy.com/media/hrRJ41JB2zlgZiYcCw/giphy.gif" />
 
-<h1>--------------------------------</h1>
+<h2>--------------------------------</h2>
 Bootcamp de Automação de Testes usando o Cypress ⚡️
 Equipe <a rel="Agilizei" href=”https://agilizei.com/”>
 
